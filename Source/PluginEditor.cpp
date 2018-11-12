@@ -98,7 +98,7 @@ void PyoPlugAudioProcessorEditor::buttonClicked (Button* button) {
         editor->loadContent("input = Input([0, 1])\n\ninput.out()\n");
         currentFile = String();
     } else if (button == &openButton) {
-        FileChooser fc ("Choose a file to open...", File("~"), "", false, false);
+        FileChooser fc ("Choose a file to open...", File("~"), "", true, false);
         if (fc.browseForFileToOpen()) {
             File chosen = fc.getResults().getReference(0);
             readFile(chosen);
@@ -111,7 +111,7 @@ void PyoPlugAudioProcessorEditor::buttonClicked (Button* button) {
             f.replaceWithText(editor->getDocument().getAllContent());
         }
     } else if (button == &saveAsButton) {
-        FileChooser fc ("Choose a file to save...", File("~"), "", false, false);
+        FileChooser fc ("Choose a file to save...", File("~"), "", true, false);
         if (fc.browseForFileToSave(true)) {
             File chosen = fc.getResults().getReference(0);
             chosen.replaceWithText(editor->getDocument().getAllContent());
